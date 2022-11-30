@@ -8,6 +8,10 @@ newProject:
   displayName: ""
   nodeSelector: ""
   requestor: "cluster-admin"
+  groups:
+    admin: ""
+    view: ""
+    edit: ""
 
 rbac:
   admin: []
