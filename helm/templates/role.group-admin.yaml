@@ -1,0 +1,23 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    {{- include "project-request.labels" . | nindent 4 }}
+  name: "{{ .Values.newProject.name }}-group-admin"
+rules:
+- apiGroups:
+  - "user.openshift.io"
+  resources:
+  - groups
+  resourceNames:
+  - "{{ .Values.newProject.name }}-admin"
+  - "{{ .Values.newProject.name }}-edit"
+  - "{{ .Values.newProject.name }}-view"
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - watch
+  - patch

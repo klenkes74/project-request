@@ -1,0 +1,18 @@
+# Default values for project-request.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+newProject:
+  name: ""
+  description: ""
+  displayName: ""
+  nodeSelector: ""
+  requestor: "cluster-admin"
+
+rbac:
+  admin: []
+  view: []
+  edit: []
+
+features:
+  backup: true

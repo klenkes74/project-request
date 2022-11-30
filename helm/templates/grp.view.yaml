@@ -1,0 +1,15 @@
+{{- if .Values.rbac }}
+{{- if .Values.rbac.view }}
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: "{{ .Values.newProject.name }}-view"
+  labels:
+    {{- include "project-request.labels" . | nindent 4 }}
+users:
+{{- range .Values.rbac.view }}
+- {{ . | quote }}
+{{- end }}
+{{- end }}
+{{- end }}

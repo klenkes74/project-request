@@ -1,0 +1,13 @@
+{{- if (.Values.rbac).admin }}
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: "{{ .Values.newProject.name }}-admin"
+  labels:
+    {{- include "project-request.labels" . | nindent 4 }}
+users:
+{{- range .Values.rbac.admin }}
+- {{ . | quote }}
+{{- end }}
+{{- end }}

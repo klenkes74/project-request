@@ -1,0 +1,17 @@
+{{- if .Values.features.backup }}
+---
+kind: Schedule
+apiVersion: velero.io/v1
+metadata:
+  name: "{{ .Values.newProject.name }}"
+  namespace: openshift-adp
+  labels:
+    {{- include "project-request.labels" . | nindent 4 }}
+spec:
+  schedule: 0 5 * * *
+  template:
+    defaultVolumesToRestic: true
+    includedNamespaces:
+    - "{{ .Values.newProject.name }}"
+    ttl: 168h0m0s
+{{- end }}

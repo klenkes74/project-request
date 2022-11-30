@@ -1,0 +1,13 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-from-same-namespace
+  namespace: {{ .Values.newProject.name }}
+  labels:
+    {{- include "project-request.labels" . | nindent 4 }}
+spec:
+  ingress:
+  - from:
+    - podSelector: {}
+  podSelector: {}
